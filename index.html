@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jad Eid - Software Engineer · Cloud Architect</title>
+  <meta name="description" content="Jad Eid, software engineer and cloud architect: from robotic cells on the factory floor to enterprise cloud platforms. Technical Account Manager at Amazon Web Services." />
+  <link rel="canonical" href="https://jad-eid.com/" />
+  <meta name="theme-color" content="#0a0c12" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jad Eid - Software Engineer · Cloud Architect" />
+  <meta property="og:description" content="Jad Eid, software engineer and cloud architect: from robotic cells on the factory floor to enterprise cloud platforms. Technical Account Manager at Amazon Web Services." />
+  <meta property="og:url" content="https://jad-eid.com/" />
+  <meta property="og:image" content="https://jad-eid.com/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="assets/favicon-64.png" sizes="64x64" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=GFS+Didot&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared/base.css" />
+  <link rel="stylesheet" href="temple.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="loader"><span class="pct">0%</span><span class="bar"><i></i></span></div>
+  <div id="scene"></div>
+
+  <header class="nav">
+    <a href="#hero" class="mono greek" lang="en" aria-label="Jad Eid">JAD</a>
+    <nav id="site-nav">
+      <a href="#projects">Work</a>
+      <a href="#skills">Expertise</a>
+      <a href="#contact">Contact</a>
+      <span class="nav-rule"></span>
+      <a href="https://drive.google.com/file/d/1vVBf0OVJAkedMu4y8bwIIkTMLeyUnaAk/view?usp=sharing" target="_blank" rel="noopener">CV</a>
+      <a href="https://www.linkedin.com/in/jadeid99/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/JadEid99" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  </header>
+
+  <ol class="chapters" id="chapters">
+    <li><a href="#hero">I</a></li>
+    <li><a href="#projects">II</a></li>
+    <li><a href="#skills">III</a></li>
+    <li><a href="#contact">IV</a></li>
+  </ol>
+
+  <main>
+    <section id="hero" data-state="hero" class="screen book">
+      <div class="col dedication sr-only">
+        <p class="eyebrow">Software Engineer · Cloud Architect</p>
+        <h1>Jad Eid</h1>
+        <p class="lede">I design and build systems on solid foundations, from robotic cells on the factory floor to enterprise cloud platforms.</p>
+        <p class="presently"><span>Presently</span>Technical Account Manager, Amazon Web Services · Munich</p>
+        <nav class="chapter-links" aria-label="Sections">
+          <a href="#projects"><b>I</b>View the work</a>
+          <a href="#contact"><b>II</b>Get in touch</a>
+        </nav>
+        <ul class="sr-only" aria-label="Certifications (verified on Credly)">
+          <li><a href="https://www.credly.com/badges/3555ea61-2f8d-4002-a23a-1ec8a1901593/public_url">AWS Certified Solutions Architect - Professional</a></li>
+          <li><a href="https://www.credly.com/badges/40337c25-9cd8-4e32-9b6e-b899f47de45c/public_url">AWS Certified Security - Specialty</a></li>
+          <li><a href="https://www.credly.com/badges/748da346-648f-443b-aa8b-50fc4e3e1646/public_url">AWS Certified Solutions Architect - Associate</a></li>
+          <li><a href="https://www.credly.com/badges/048240ca-c89f-41a7-b8e3-d5946a609d6b/public_url">Google Cloud Professional Cloud Architect</a></li>
+          <li><a href="https://www.credly.com/badges/f91b6b95-2620-4c01-badb-2b2b3cae6271/public_url">Professional Scrum Master I</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" data-state="projects">
+      <div class="col right">
+        <p class="eyebrow">II - The Ascent</p>
+        <h2>A journey of a thousand miles<br /><em>begins with a single step.</em></h2>
+        <p class="motto">Lao Tzu</p>
+        <ol class="ascent" id="ascent"></ol>
+      </div>
+    </section>
+
+    <section id="skills" data-state="skills">
+      <div class="sticky">
+        <div class="col">
+          <p class="eyebrow">III - Expertise</p>
+          <h2>Six pillars,<br /><em>one temple.</em></h2>
+          <p class="lede small">Each column carries a discipline. Keep scrolling to walk around the temple.</p>
+          <ol class="pillar-index" id="pillar-index" aria-hidden="true"></ol>
+          <div class="pillar" id="pillar" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" data-state="contact" class="screen">
+      <div class="col">
+        <p class="eyebrow">IV - Contact</p>
+        <h2>Let’s build something<br /><em>that lasts.</em></h2>
+        <a class="email" href="mailto:jad.n.eid@gmail.com">jad.n.eid@gmail.com</a>
+        <p class="tongues">English · Arabic · German · French</p>
+      </div>
+    </section>
+  </main>
+  <a class="scroll-cue" href="#projects"><b>Scroll</b><span></span></a>
+
+
+  <script src="shared/errors.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

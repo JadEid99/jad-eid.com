@@ -1,73 +1,52 @@
-# 🎹 Interactive Keyboard Portfolio
+# Jad Eid · The Island Temple
 
-A modern, interactive portfolio website featuring a 3D keyboard where each key represents a different skill or technology. Built with Next.js, TypeScript, and React.
+My portfolio at [jad-eid.com](https://jad-eid.com): a scroll through a classical temple on a floating island, in the
+browser with [three.js](https://threejs.org).
 
-## ✨ Features
+- **The book**: you arrive at a worn leather book on a lectern. Scrolling opens it to a few words about me, my
+  profiles and my certifications (each one a link).
+- **Work**: the camera climbs a staircase whose steps carry my career, each chapter carved into the step for the year
+  it began. The step for the entry you're reading catches fire.
+- **Expertise**: the camera walks round the temple's six columns, one discipline per column, its Latin name carved and
+  gilded above it.
+- **Contact**: the view pulls back to the whole island.
 
-### 🎮 Interactive 3D Keyboard
-- **Spline 3D Integration**: Interactive keyboard built with Spline 3D
-- **Skill Discovery**: Each key reveals different technologies and skills
-- **Responsive Design**: Optimized for both desktop and mobile experiences
-- **Dynamic Animations**: Smooth transitions and GSAP-powered animations
+Plus a waterfall, sound (waterfall and music, muffled until you reach the temple) and a Greek version of my name.
 
-### 🎨 Modern UI/UX
-- **Dark/Light Theme**: Seamless theme switching with next-themes
-- **Smooth Scrolling**: Enhanced scroll experience with Lenis
-- **Reveal Animations**: Beautiful entrance animations for content
-- **Particle Effects**: Dynamic background with animated particles
-- **Comet Animations**: Engaging visual effects using GIF animations
+The previous portfolio (Next.js, a 3D keyboard) is tagged [`v1-keyboard`](../../tree/v1-keyboard).
 
-### 🛠️ Techn Stack
-- **Frontend**: Next.js, React, TypeScript
-- **Styling**: Tailwind CSS, SCSS modules
-- **3D Graphics**: Spline 3D, Three.js
-- **Animations**: GSAP, Framer Motion
-- **UI Components**: Radix UI, Shadcn/ui, Aceternity UI
-- **Email**: Resend API integration
-- **Deployment**: Vercel
+## Run it locally
 
-## 🚀 Getting Started
+No build step and no dependencies: plain HTML, CSS and JavaScript modules, with three.js loaded from a CDN.
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn package manager
+```bash
+python tools/serve.py
+```
 
-### Installation
+Then open http://localhost:5181. The server turns off caching, so a reload always shows your latest edits.
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/JadEid99/KeyboardPortfolio.git
-   cd KeyboardPortfolio
-   ```
+**On a phone**: open `http://<this computer's IP>:5181` on the same Wi-Fi (Windows: allow port 5181 through the
+firewall first). Phones report their errors, loading stages and frame rate back to the server, which prints them and
+writes them to `tools/devlog.txt`. Phones have no console, so this is how you see what went wrong. This only happens
+on the local server, never on the live site.
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+## Deploy
 
-3. **Set up environment variables**
-   Create a `.env.local` file in the root directory:
-   ```env
-   RESEND_API_KEY=your_resend_api_key_here
-   ```
+Vercel deploys `main` to jad-eid.com: merge to `main` and it's live. Branches get preview URLs. `vercel.json` marks
+the site as static (no framework, no build) and sets caching for the model and assets.
 
-4. **Run the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+## Files
 
-5. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+| | |
+|---|---|
+| `index.html` | the page: text for each section, menu, loading screen |
+| `main.js` | the scene: temple, camera path, sections, the Expertise pillars (`PILLARS`) |
+| `extras.js` | everything else in the scene: sky, clouds, water, waterfall, sound, carved names, staircase (`MILESTONES`: the career), the book (`ABOUT`, `CERTS`, `PROFILES`) |
+| `shared/` | loading, stage and camera plumbing (`base.js`), base styles, the error screen (`errors.js`) |
+| `temple.css` | the site's styles, phones included |
+| `temple.glb`, `assets/` | the 3D model (6.3 MB), lectern, textures, badges, audio, icons, social preview image |
+| `docs/FEATURES.md` | each feature in detail, and how the site adapts to phones and slow devices |
+| `tools/serve.py` | the local server |
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-
-**Built with ❤️ by [Jad Eid](https://jad-eid.com)**
-
-*Experience the future of portfolio websites with interactive 3D elements and modern web technologies.*
+The source models and textures, and the scripts that prepared them (Blender, gltf-transform), live outside this
+repo.
