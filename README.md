@@ -33,7 +33,7 @@ on the local server, never on the live site.
 ## Deploy
 
 Vercel deploys `main` to jad-eid.com: merge to `main` and it's live. Branches get preview URLs. `vercel.json` marks
-the site as static (no framework, no build) and sets caching for the model and assets.
+the site as static (no framework, no build) and caches the model and assets for an hour, so updates reach returning visitors within the hour.
 
 ## Files
 
