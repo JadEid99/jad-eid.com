@@ -94,8 +94,9 @@ scene.add(rim);
 extra.sky({ scene, renderer, sun, hemi });
 
 // ---------------------------------------------------------------- model
-// one build for every device: 1-2K WebP maps (6.3 MB, ~220 MB of GPU memory). WebP rather than KTX2: on these
-// textures KTX2 comes out darker and blurrier, with no saving in download size.
+// one build for every device (5.1 MB): AVIF textures, 2K colour maps throughout and 2K normal maps on the steps
+// and the temple, where the camera comes closest. (AVIF rather than KTX2: on these textures KTX2 comes out darker
+// and blurrier, with no saving in download size.)
 const model = await loadModel("temple.glb", [0, 0.75]);
 model.traverse((o) => {
   if (o.isMesh) for (const t of ["map", "normalMap"]) if (o.material[t]) o.material[t].anisotropy = renderer.capabilities.getMaxAnisotropy();

@@ -53,7 +53,10 @@ export function createStage({ background = 0x05070c, bloom = [0.35, 0.5, 0.9], e
   scene.background = new THREE.Color(background);
   const camera = new THREE.PerspectiveCamera(fov, innerWidth / innerHeight, 0.01, 500);
 
-  const composer = new EffectComposer(renderer);
+  // Edge smoothing (4x MSAA) on screens under 1.5x, where jagged edges show; denser screens hardly need it.
+  // The composer's own render targets carry it, since the scene is drawn into those, not onto the canvas.
+  let msaa = !lowPower && pixelRatio < 1.5;
+  const composer = new EffectComposer(renderer, new THREE.WebGLRenderTarget(innerWidth, innerHeight, { type: THREE.HalfFloatType, samples: msaa ? 4 : 0 }));
   composer.setPixelRatio(pixelRatio);
   composer.addPass(new RenderPass(scene, camera));
   const bloomPass = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), ...bloom);
@@ -101,8 +104,9 @@ export function createStage({ background = 0x05070c, bloom = [0.35, 0.5, 0.9], e
       update(dt, clock.elapsedTime + extra);
       composer.render();
     };
-    // if frames come slower than ~40 a second for a few seconds, render fewer pixels (down to 0.75x), so slow
-    // machines stay smooth; it never goes back up (no flicker between sizes)
+    // If frames come slower than ~40 a second for a few seconds, ease off: edge smoothing goes first, then the
+    // resolution steps down, but never below one render pixel per screen pixel (below that it turns blurry).
+    // It never goes back up (no flicker between sizes).
     let slow = 0, sum = 0, n = 0, worst = 0;
     const adapt = (dt) => {
       if (document.hidden || dt > 0.25) return; // a hidden tab or a hitch, not the steady rate
@@ -114,11 +118,15 @@ export function createStage({ background = 0x05070c, bloom = [0.35, 0.5, 0.9], e
       worst = 0;
       slow = sum / n > 1 / 40 ? slow + 1 : 0;
       sum = n = 0;
-      if (slow >= 2 && pixelRatio > 0.75) {
-        pixelRatio = Math.max(0.75, pixelRatio - 0.25);
+      if (slow < 2) return;
+      slow = 0;
+      if (msaa) {
+        msaa = false;
+        for (const rt of [composer.renderTarget1, composer.renderTarget2]) (rt.samples = 0), rt.dispose(); // rebuilt on the next frame
+      } else if (pixelRatio > 1) {
+        pixelRatio = Math.max(1, pixelRatio - 0.25);
         renderer.setPixelRatio(pixelRatio);
         composer.setPixelRatio(pixelRatio);
-        slow = 0;
       }
     };
     let reported = false;

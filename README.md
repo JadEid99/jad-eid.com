@@ -44,7 +44,7 @@ the site as static (no framework, no build) and sets caching for the model and a
 | `extras.js` | everything else in the scene: sky, clouds, water, waterfall, sound, carved names, staircase (`MILESTONES`: the career), the book (`ABOUT`, `CERTS`, `PROFILES`) |
 | `shared/` | loading, stage and camera plumbing (`base.js`), base styles, the error screen (`errors.js`) |
 | `temple.css` | the site's styles, phones included |
-| `temple.glb`, `assets/` | the 3D model (6.3 MB), lectern, textures, badges, audio, icons, social preview image |
+| `temple.glb`, `assets/` | the 3D model (5.1 MB, AVIF textures), lectern, textures, badges, audio, icons, social preview image |
 | `docs/FEATURES.md` | each feature in detail, and how the site adapts to phones and slow devices |
 | `tools/serve.py` | the local server |
 
